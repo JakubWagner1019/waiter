@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@Profile("mock")
-public class MockOrderService implements IOrderService {
+@Profile("notused")
+public class MockOrderService implements OrderService {
 
     @Override
     public Optional<Order> get(long id) {
@@ -26,5 +26,17 @@ public class MockOrderService implements IOrderService {
     @Override
     public boolean remove(long id) {
         return false;
+    }
+
+    @Override
+    public void acceptOrder(long id) {
+    }
+
+    @Override
+    public void declineOrder(long id) {
+    }
+
+    @Override
+    public void completeOrder(long id) {
     }
 }

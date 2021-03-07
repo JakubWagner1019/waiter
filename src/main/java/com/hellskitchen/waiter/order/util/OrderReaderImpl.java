@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("local")
-public class OrderReaderImpl implements IOrderReader {
+public class OrderReaderImpl implements OrderReader {
 
     @Override
     public Order read(String orderAsJson) {

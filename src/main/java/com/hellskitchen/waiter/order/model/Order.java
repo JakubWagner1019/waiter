@@ -3,16 +3,31 @@ package com.hellskitchen.waiter.order.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
 
-    enum OrderStatus{
+    public enum OrderStatus{
+        PENDING_APPROVAL,
         ACCEPTED,
         DECLINED,
         COMPLETED
     }
 
+    public Order(){
+        this.status = OrderStatus.PENDING_APPROVAL;
+    }
+
+    private OrderStatus status;
     private final List<OrderEntry> order = new ArrayList<>();
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
 
     public boolean addOrderEntry(long dishId, long count){
         return order.add(new OrderEntry(dishId, count));
@@ -25,7 +40,8 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "entryList=" + order +
+                "status=" + status +
+                ", order=" + order +
                 '}';
     }
 
@@ -56,6 +72,19 @@ public class Order {
 
         public void setCount(long count) {
             this.count = count;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            OrderEntry that = (OrderEntry) o;
+            return dishId == that.dishId && count == that.count;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(dishId, count);
         }
 
         @Override

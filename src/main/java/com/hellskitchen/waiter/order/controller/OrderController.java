@@ -1,8 +1,8 @@
 package com.hellskitchen.waiter.order.controller;
 
 import com.hellskitchen.waiter.order.model.Order;
-import com.hellskitchen.waiter.order.service.IOrderService;
-import com.hellskitchen.waiter.order.util.IOrderReader;
+import com.hellskitchen.waiter.order.service.OrderService;
+import com.hellskitchen.waiter.order.util.OrderReader;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +17,10 @@ import java.util.Optional;
 @RestController
 public class OrderController {
 
-    private final IOrderService orderService;
-    private final IOrderReader orderReader;
+    private final OrderService orderService;
+    private final OrderReader orderReader;
 
-    public OrderController(IOrderService orderService, IOrderReader orderReader) {
+    public OrderController(OrderService orderService, OrderReader orderReader) {
         this.orderService = orderService;
         this.orderReader = orderReader;
     }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("mock")
-public class MockOrderReader implements IOrderReader {
+public class MockOrderReader implements OrderReader {
 
     @Override
     public Order read(String orderAsJson) {
